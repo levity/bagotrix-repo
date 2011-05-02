@@ -1,10 +1,10 @@
 # http://emmanueloga.wordpress.com/2009/09/29/pretty-printing-xhtml-with-nokogiri-and-xslt/
 
-require 'nokogiri'
+require 'nokogiri' unless defined? Rails
 
-class PPXML
-  def self.pp(nokogiri_doc) 
-    puts Nokogiri::XSLT(XSL).apply_to(nokogiri_doc).to_s
+class PPXML  
+  def self.pretty(nokogiri_doc)
+    Nokogiri::XSLT(XSL).apply_to(nokogiri_doc).to_s
   end
   
   XSL = <<-EOXSL
